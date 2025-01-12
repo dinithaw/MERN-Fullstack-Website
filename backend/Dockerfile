@@ -7,13 +7,13 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies and nodemon globally
-RUN npm install && npm install -g nodemon
+# Install dependencies
+RUN npm install
 
 # Copy the rest of the application code
 COPY . .
 
-# Expose the backend port
+# Expose the port the backend runs on
 EXPOSE 4000
 
 # Start the backend server
