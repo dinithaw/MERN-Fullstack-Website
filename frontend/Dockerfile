@@ -1,20 +1,22 @@
-# Use an official Node.js runtime as a base image
 FROM node:18
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies and vite globally
+RUN npm ci --legacy-peer-deps && npm install -g vite
 
 # Copy the rest of the application code
 COPY . .
 
-# Expose the frontend port
+# Copy .env file
+COPY .env .env
+
+# Expose the port
 EXPOSE 5173
 
-# Start the React development server
-CMD ["npm", "run", "dev"]
+# Start the server
+CMD ["vite"]

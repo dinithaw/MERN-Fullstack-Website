@@ -1,33 +1,68 @@
+
 version: '3.8'
 
 services:
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     ports:
-      - "4000:4000" # Map backend port
+      - "4000:4000"
     environment:
-      - NODE_ENV=development
-      - MONGO_URI= "mongodb+srv://ldinitha:NSBM1234@cluster0.xqjol.mongodb.net"
-    volumes:
-      - ./backend:/app
+      - JWT_SECRET=greatstack
+      - ADMIN_EMAIL=admin@example.com
+      - ADMIN_PASSWORD=greatstack123
+      - MONGODB_URI=mongodb+srv://ldinitha:NSBM1234@cluster0.xqjol.mongodb.net
+      - CLOUDINARY_API_KEY=212221644141426
+      - CLOUDINARY_SECRET_KEY=CbAk2S9TzwjM5n-_RjlaO_Ftd6Q
+      - CLOUDINARY_NAME=dnnlkayzi
 
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile
     ports:
-      - "5173:5173" # Map frontend port
+      - "5173:5173"
     environment:
-      - NODE_ENV=development
-    volumes:
-      - ./frontend:/app
+      - VITE_BACKEND_URL=http://localhost:4000
 
   admin:
     build:
       context: ./admin
+      dockerfile: Dockerfile
     ports:
-      - "5174:5174" # Map admin panel port
+      - "5174:5174"
     environment:
-      - NODE_ENV=development
-    volumes:
-      - ./admin:/app
+      - VITE_BACKEND_URL=http://localhost:4000
+
+# services:
+#   backend:
+#     build:
+#       context: ./backend
+#     ports:
+#       - "4000:4000" # Map backend port
+#     environment:
+#       - NODE_ENV=development
+#       - MONGO_URI= "mongodb+srv://ldinitha:NSBM1234@cluster0.xqjol.mongodb.net"
+#     volumes:
+#       - ./backend:/app
+
+#   frontend:
+#     build:
+#       context: ./frontend
+#     ports:
+#       - "5173:5173" # Map frontend port
+#     environment:
+#       - NODE_ENV=development
+#     volumes:
+#       - ./frontend:/app
+
+#   admin:
+#     build:
+#       context: ./admin
+#     ports:
+#       - "5174:5174" # Map admin panel port
+#     environment:
+#       - NODE_ENV=development
+#     volumes:
+#       - ./admin:/app
