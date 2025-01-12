@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a base image
-FROM node:22-alpine
+FROM node:18
 
 # Set the working directory in the container
 WORKDIR /app
@@ -13,8 +13,8 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the frontend runs on
-EXPOSE 3000
+# Expose the frontend port
+EXPOSE 5173
 
 # Start the React development server
 CMD ["npm", "run", "dev"]
