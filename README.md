@@ -7,8 +7,8 @@
 > Manage your Clothing shop, plan your offers and discounts with this modern MERN stack application.
 
 <p align="center">
-  <img src="https://github.com/dinithaw/Wardrobe-MERN/blob/main/admin.png" alt="Screenshot of the main interface" width="400">
-  <img src="https://github.com/dinithaw/Wardrobe-MERN/blob/main/frontend.png" alt="Screenshot of the admin panel" width="400">
+  <img src="/admin.png" alt="Screenshot of the main interface" width="400">
+  <img src="/frontend.png" alt="Screenshot of the admin panel" width="400">
 </p>
 <p align="center"><em>(preview)</em></p>
 
