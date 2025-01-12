@@ -8,11 +8,9 @@ services:
       - "4000:4000" # Map backend port
     environment:
       - NODE_ENV=development
-      - MONGO_URI=mongodb://mongodb:27017/mern_database
+      - MONGO_URI= "mongodb+srv://ldinitha:NSBM1234@cluster0.xqjol.mongodb.net"
     volumes:
       - ./backend:/app
-    depends_on:
-      - mongodb
 
   frontend:
     build:
@@ -23,8 +21,6 @@ services:
       - NODE_ENV=development
     volumes:
       - ./frontend:/app
-    depends_on:
-      - backend
 
   admin:
     build:
@@ -35,16 +31,3 @@ services:
       - NODE_ENV=development
     volumes:
       - ./admin:/app
-    depends_on:
-      - backend
-
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    ports:
-      - "27017:27017" # Expose MongoDB port
-    volumes:
-      - mongo-data:/data/db
-
-volumes:
-  mongo-data:

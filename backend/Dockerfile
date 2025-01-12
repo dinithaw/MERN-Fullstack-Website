@@ -13,7 +13,7 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the backend runs on
+# Expose the backend port
 EXPOSE 4000
 
 # Start the backend server
