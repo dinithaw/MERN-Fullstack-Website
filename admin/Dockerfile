@@ -20,3 +20,4 @@ EXPOSE 5174
 
 # Start the server
 CMD ["vite"]
+CMD ["npm", "run", "dev", "--", "--host"]
