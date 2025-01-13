@@ -1,0 +1,67 @@
+name: CI/CD for MERN Stack
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    name: Build and Test Application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm install
+
+      - name: Test Backend
+        working-directory: ./backend
+        run: npm run server
+
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build Frontend
+        working-directory: ./frontend
+        run: npm run dev
+
+      - name: Install Admin Dependencies
+        working-directory: ./admin
+        run: npm install
+
+      - name: Build Admin Panel
+        working-directory: ./admin
+        run: npm run dev
+
+      - name: Build Docker images
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ghcr.io/dinithaw/mern-backend:latest
+            ghcr.io/dinithaw/mern-frontend:latest
+            ghcr.io/dinithaw/mern-admin:latest
