@@ -22,7 +22,7 @@
 
 ## 💻 Tech Stack
 
-*   **Frontend:** React.js, Tailwind CSS, React
+*   **Frontend:** React.js, Tailwind CSS, Vite
 *   **Backend:** Node.js, Express.js, Mongoose
 *   **Database:** MongoDB
 
@@ -32,7 +32,8 @@
 
 *   Node.js 
 *   npm 
-*   MongoDB 
+*   MongoDB
+*   or Docker 
 
 ### Installation
 
@@ -73,7 +74,7 @@
 6.  Create a `.env` file in the `frontend` directory and configure:
 
     ```
-    REACT_APP_API_URL=http://localhost:5000
+    REACT_APP_API_URL=http://localhost:4000
     ```
 
 7.  Start the frontend:
@@ -84,10 +85,16 @@
 
 8.  Repeat steps 5-7 for the `admin` directory, creating a `.env` file with the same `REACT_APP_API_URL`.
 
+# 🐬 OR RUN USING DOCKER 🐬
+
+```bash
+    docker compose up --build 
+```
+
 ## ⚙️ Usage
 
-*   Access the frontend at `http://localhost:3000`.
-*   Access the admin panel at `http://localhost:3001`.
+*   Access the frontend at `http://localhost:5713`.
+*   Access the admin panel at `http://localhost:5714`.
 
 ## 🚀 Deployment
 
